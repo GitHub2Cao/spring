@@ -12,7 +12,7 @@ public class User implements Serializable {
 
 	private String password;
 
-	private int credits;
+	private int credit;
 
 	private String lastIp;
 
@@ -58,11 +58,11 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public int getCredits() {
-		return credits;
+	public int getCredit() {
+		return credit;
 	}
 
-	public void setCredits(int credits) {
-		this.credits = credits;
+	public void setCredit(int credit) {
+		this.credit = credit;
 	}
 }

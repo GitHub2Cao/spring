@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.softnovo.dal.mapper.UserMapper">
+	<select id="getMatchCount" resultType="int">
+		select 
+			count(user_id) 
+		from 
+			t_user
+		where
+			1 = 1
+			<if test="userName != null and userName != ''">
+				and user_name = ${userName}
+			</if>
+			<if test="password != null and password != ''">
+				and password = ${password}
+			</if>
+	</select>
+	
+	<select id="findUserByUserName" resultType="com.softnovo.domain.User">
+		select 
+			user_id    as userId
+  			user_name  as userName
+  			password   as password
+  			credit     as credit
+  			last_ip as lastIp
+  			last_visit  as lastVisit
+		from 
+			t_user
+		where
+			1 = 1
+			<if test="userName != null and userName != ''">
+				and user_name like CONCAT('%', ${userName}, '%')
+			</if>
+	</select>
+
+	<update id="updateLoginInfo" parameterType="com.softnovo.domain.User">
+		update 
+			t_user 
+		set 
+			<if test="lastIp != null and lastIp != ''">
+				last_ip = ${lastIp},
+			</if>
+			<if test="credit != 0">
+				credit = ${credit},
+			</if>
+			last_visit = now()
+		where user_id = ${userId};
+	</update>
+	
+	<insert id="addUser" parameterType="com.softnovo.domain.User">
+		insert into t_user 
+			(user_name, password, credit, last_ip, last_visit)
+		values 
+  			(#{userName}, #{password}, #{credit}, #{lastIp}, #{lastVisit})
+	</insert>
+</mapper>
