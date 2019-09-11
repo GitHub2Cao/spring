@@ -5,10 +5,10 @@ import java.util.Date;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.softnovo.base.BaseTest;
+import com.softnovo.base.DaoBaseTest;
 import com.softnovo.domain.User;
 
-public class UserDaoTest extends BaseTest {
+public class UserDaoTest extends DaoBaseTest {
 	@Autowired
     private UserDao userDao;
 
