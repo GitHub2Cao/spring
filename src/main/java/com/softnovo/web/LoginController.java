@@ -18,13 +18,14 @@ public class LoginController {
 
 	@RequestMapping(value = "/index")
 	public String loginPage() {
-		return "add";
+		return "index";
 	}
 	
 	@RequestMapping(value = "/add")
 	@ResponseBody
 	public String add() {
-		return "add";
+		userService.addUser(null);
+		return "adddfdfdf";
 	}
 
 	@RequestMapping(value = "/main")

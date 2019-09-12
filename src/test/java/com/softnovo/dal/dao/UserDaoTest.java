@@ -16,7 +16,7 @@ public class UserDaoTest extends DaoBaseTest {
     public void addUser() {
     	try {
     		User user = new User();
-    		user.setUserName("ccc");
+    		user.setUserName("cccd");
     		user.setPassword("123456");
     		user.setCredit(1);
     		user.setLastIp("127.0.0.1");
