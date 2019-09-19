@@ -1,6 +1,7 @@
 package com.softnovo.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -21,14 +22,18 @@ import org.springframework.util.CollectionUtils;
 import com.alibaba.fastjson.JSON;
 import com.softnovo.dal.dao.UserDao;
 import com.softnovo.domain.User;
+import com.softnovo.service.UserPP;
 import com.softnovo.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService, BeanFactoryAware, BeanNameAware, InitializingBean, DisposableBean {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-	
 	@Autowired
 	private UserDao userDao;
+	@Autowired
+	private List<UserPP> userList;
+	@Autowired
+	private Map<String, UserPP> userMap;
 	
 	public UserServiceImpl() {
 		LOGGER.info("UserServiceImpl");
@@ -47,6 +52,8 @@ public class UserServiceImpl implements UserService, BeanFactoryAware, BeanNameA
 	@Override
 	public int addUser(User user) {
 		LOGGER.info("add user:{}", JSON.toJSONString(user));
+		LOGGER.info("userList:{}", userList);
+		LOGGER.info("userMap:{}", userMap);
 		return userDao.addUser(user);
 	}
 	
