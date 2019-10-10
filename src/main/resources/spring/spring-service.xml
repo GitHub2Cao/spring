@@ -4,12 +4,15 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
 	default-autowire="byName">
+	
+	<aop:aspectj-autoproxy />
 
 	<!--扫描service包下所有使用注解的类型 -->
 	<context:component-scan base-package="com.softnovo.service" />
@@ -19,6 +22,15 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
+	<!-- <bean id="greetingAdvice" class="com.softnovo.service.aop.GreetingBeforeAdvice" />
+	<bean id="regexpAdvisor" 
+		class="org.springframework.aop.support.RegexpMethodPointcutAdvisor" 
+		p:patterns=".*To.*" p:advice-ref="greetingAdvice"
+		/> -->
+		
+	<!-- <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" p:proxyTargetClass="true" /> -->
+	
+	<!-- <bean class="com.softnovo.tttt.event.MailSendListener"/> -->
 	<!-- <bean id="book" class="com.softnovo.tttt.Book" scope="request">
 		<aop:scoped-proxy/>
 	</bean> -->
