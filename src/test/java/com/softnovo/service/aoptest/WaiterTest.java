@@ -6,6 +6,7 @@ import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softnovo.base.ServiceBaseTest;
+import com.softnovo.service.Seller;
 import com.softnovo.service.Waiter;
 import com.softnovo.service.aop.GreetingBeforeAdvice;
 
@@ -14,9 +15,20 @@ public class WaiterTest extends ServiceBaseTest {
 	private Waiter waiter;
 	
 	@Test
+	public void testEnable() {
+		try {
+			waiter.greetTo("aaa");
+			Seller sss = (Seller) waiter;
+			sss.sell("bbb");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
 	public void test() {
 		try {
-			//waiter.greetTo("hhh");
+			waiter.greetTo("hhhssss");
 			waiter.serveTo("hhh");
 		} catch (Exception e) {
 			e.printStackTrace();
