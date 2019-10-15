@@ -44,6 +44,9 @@ public class UserServiceTest extends ServiceBaseTest {
     @Test
     public void addUsers() {
     	try {
+    		String s = Thread.currentThread().getContextClassLoader().getResource("").getPath();
+            System.out.println("classpath : ----------------- " + s );
+    		
     		List<User> users = new ArrayList<>();
     		User user = new User();
     		user.setUserName("cgm");
@@ -78,6 +81,48 @@ public class UserServiceTest extends ServiceBaseTest {
     		users.add(user);
     		
     		userService.addUsers(users);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    }
+    
+    @Test
+    public void addUsersWithAnnon() {
+    	try {
+    		List<User> users = new ArrayList<>();
+    		User user = new User();
+    		user.setUserName("cgm");
+    		user.setPassword("123456");
+    		user.setCredit(1);
+    		user.setLastIp("127.0.0.1");
+    		user.setLastVisit(new Date());
+    		users.add(user);
+    		user = new User();
+    		user.setUserName("112");
+    		user.setPassword("123456");
+    		user.setCredit(1);
+    		user.setLastIp("127.0.0.1");
+    		user.setLastVisit(new Date());
+    		
+    		
+    		users.add(user);
+    		
+    		user = new User();
+    		user.setUserName("112");
+    		user.setPassword("123456");
+    		user.setCredit(1);
+    		user.setLastIp("127.0.0.1");
+    		user.setLastVisit(new Date());
+    		users.add(user);
+    		user = new User();
+    		user.setUserName("111");
+    		user.setPassword("123456");
+    		user.setCredit(1);
+    		user.setLastIp("127.0.0.1");
+    		user.setLastVisit(new Date());
+    		users.add(user);
+    		
+    		userService.addUsersWithAnnon(users);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -16,7 +16,10 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallbackWithoutResult;
+import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.util.CollectionUtils;
 
 import com.alibaba.fastjson.JSON;
@@ -34,6 +37,8 @@ public class UserServiceImpl implements UserService, BeanFactoryAware, BeanNameA
 	private List<UserPP> userList;
 	@Autowired
 	private Map<String, UserPP> userMap;
+	@Autowired
+	private TransactionTemplate transactionTemplate;
 	
 	public UserServiceImpl() {
 		LOGGER.info("UserServiceImpl");
@@ -54,15 +59,34 @@ public class UserServiceImpl implements UserService, BeanFactoryAware, BeanNameA
 		LOGGER.info("add user:{}", JSON.toJSONString(user));
 		LOGGER.info("userList:{}", userList);
 		LOGGER.info("userMap:{}", userMap);
+		if ("111".equals(user.getUserName())) {
+			throw new RuntimeException("_+_+_+_+_+_+_+_+_+_+_+_+_+_+ ");
+		}
 		return userDao.addUser(user);
+	}
+	
+	//@Transactional
+	@Override
+	public int addUsers(List<User> users) {
+		if (!CollectionUtils.isEmpty(users)) {
+			transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+				@Override
+				protected void doInTransactionWithoutResult(TransactionStatus status) {
+					users.stream().forEach(user -> {
+						addUser(user);
+					});
+				}
+			});
+		}
+		return 1;
 	}
 	
 	@Transactional
 	@Override
-	public int addUsers(List<User> users) {
+	public int addUsersWithAnnon(List<User> users) {
 		if (!CollectionUtils.isEmpty(users)) {
 			users.stream().forEach(user -> {
-				this.addUser(user);
+				addUser(user);
 			});
 		}
 		return 1;

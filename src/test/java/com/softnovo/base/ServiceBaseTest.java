@@ -19,8 +19,8 @@ import ch.qos.logback.core.joran.spi.JoranException;
 public class ServiceBaseTest {
 	@Before
 	public void initLogback() throws IOException, JoranException {
-		LogBackConfigLoader.load("/Users/cgm/newgit/spring/src/main/resources/spring/logback.xml");
-	    org.slf4j.Logger logger = LoggerFactory.getLogger("com.softnovo.base");  
-	    logger.debug("logback inited"); 
+//		LogBackConfigLoader.load("/Users/cgm/newgit/spring/src/main/resources/spring/logback.xml");
+//	    org.slf4j.Logger logger = LoggerFactory.getLogger("com.softnovo.base");  
+//	    logger.debug("logback inited");
 	}
 }

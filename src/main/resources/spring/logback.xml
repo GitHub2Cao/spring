@@ -53,9 +53,11 @@
 		<appender-ref ref="spring-service" />
 	</logger>
 	
-	<logger name="com.ibatis" level="debug" />
-    <logger name="java.sql" level="debug" />
-    <logger name="org.apache.ibatis" level="debug" />
+	<logger name="com.ibatis" level="DEBUG" />
+    <logger name="java.sql" level="DEBUG" />
+    <logger name="org.apache.ibatis" level="DEBUG" />
+    <logger name="org.mybatis" level="DEBUG" />
+	<logger name="org.springframework" level="DEBUG" />
 
 	<root level="debug">
 		<appender-ref ref="STDOUT" />
