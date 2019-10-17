@@ -15,12 +15,14 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import com.alibaba.fastjson.JSON;
 import com.softnovo.dal.dao.UserDao;
@@ -52,6 +54,21 @@ public class UserServiceImpl implements UserService, BeanFactoryAware, BeanNameA
 	@PreDestroy
 	public void ttt2() {
 		LOGGER.info("@PreDestroy");
+	}
+	
+	@Override
+	@Cacheable(cacheNames = "userNames")
+	public User findUserByUserName(String userName) {
+		if (StringUtils.isEmpty(userName)) {
+			throw new RuntimeException("userName 为空");
+		}
+		return userDao.findUserByUserName(userName);
+	}
+	
+	@Override
+	public User getByUserId(Integer userId) {
+		System.out.println("_+_+_+_+_+ getByUserId");
+		return null;// userDao.findUserByUserName(userName);
 	}
 
 	@Override

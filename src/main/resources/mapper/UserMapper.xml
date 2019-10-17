@@ -20,18 +20,18 @@
 	
 	<select id="findUserByUserName" resultType="com.softnovo.domain.User">
 		select 
-			user_id    as userId
-  			user_name  as userName
-  			password   as password
-  			credit     as credit
-  			last_ip as lastIp
-  			last_visit  as lastVisit
+			user_id    as userId,
+  			user_name  as userName,
+  			password   as password,
+  			credit     as credit,
+  			last_ip    as lastIp,
+  			last_visit as lastVisit
 		from 
 			t_user
 		where
 			1 = 1
 			<if test="userName != null and userName != ''">
-				and user_name like CONCAT('%', ${userName}, '%')
+				and user_name like CONCAT('%', '${userName}', '%')
 			</if>
 	</select>
 

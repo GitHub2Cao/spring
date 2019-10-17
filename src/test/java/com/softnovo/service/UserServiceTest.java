@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.alibaba.fastjson.JSON;
 import com.softnovo.base.ServiceBaseTest;
 import com.softnovo.domain.User;
 import com.softnovo.service.impl.MailSender;
@@ -21,6 +22,21 @@ public class UserServiceTest extends ServiceBaseTest {
 	public void mail() {
 		try {
 			mailSender.sendMail("aaaaaa");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	@Test
+	public void findUserByUserName() {
+		try {
+			String userName = "tom";
+			User user = userService.findUserByUserName(userName);
+			System.out.println("_+_+_+_+_+_+_+_+_+****" + JSON.toJSONString(user));
+			
+			
+			userName = "tom22";
+			user = userService.findUserByUserName(userName);
+			System.out.println("_+_+_+_+_+_+_+_+_+****" + JSON.toJSONString(user));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
