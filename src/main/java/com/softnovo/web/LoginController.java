@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.softnovo.domain.User;
 import com.softnovo.service.UserService;
 
@@ -27,9 +28,9 @@ public class LoginController {
 	
 	@RequestMapping(value = "/add")
 	@ResponseBody
-	public String add() {
-		userService.addUser(null);
-		return "adddfdfdf";
+	public String add(User user) {
+		userService.addUser(user);
+		return JSON.toJSONString(user);
 	}
 	
 	@RequestMapping(value = "/adds")

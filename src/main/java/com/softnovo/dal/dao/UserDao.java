@@ -1,5 +1,7 @@
 package com.softnovo.dal.dao;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,16 @@ public class UserDao {
 
 	public int addUser(User user) {
 		LOGGER.info("add user:{}", JSON.toJSONString(user));
-		return userMapper.addUser(user);
+		userMapper.addUser(user);
+		return user.getUserId();
+	}
+	
+	public int addUserBatch(List<User> users) {
+		int re = userMapper.addUserBatch(users);
+		for (User user : users) {
+			System.out.println("--------id = " + user.getUserId());
+		}
+		
+		return re;
 	}
 }

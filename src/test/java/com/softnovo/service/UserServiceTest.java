@@ -46,12 +46,13 @@ public class UserServiceTest extends ServiceBaseTest {
     public void addUser() {
     	try {
     		User user = new User();
-    		user.setUserName("cgm");
+    		user.setUserName("cgmdddd");
     		user.setPassword("123456");
     		user.setCredit(1);
     		user.setLastIp("127.0.0.1");
     		user.setLastVisit(new Date());
-    		userService.addUser(user);
+    		int id = userService.addUser(user);
+    		System.out.println("_+_+_+_+_+_+" + id);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

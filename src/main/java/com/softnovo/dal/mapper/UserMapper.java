@@ -1,5 +1,7 @@
 package com.softnovo.dal.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.softnovo.domain.User;
@@ -12,4 +14,6 @@ public interface UserMapper {
 	int updateLoginInfo(User user);
 
 	int addUser(User user);
+	
+	int addUserBatch(@Param("users") List<User> users);
 }
