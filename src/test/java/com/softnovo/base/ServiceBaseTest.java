@@ -2,6 +2,7 @@ package com.softnovo.base;
 
 import java.io.IOException;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.slf4j.LoggerFactory;
@@ -22,5 +23,14 @@ public class ServiceBaseTest {
 //		LogBackConfigLoader.load("/Users/cgm/newgit/spring/src/main/resources/spring/logback.xml");
 //	    org.slf4j.Logger logger = LoggerFactory.getLogger("com.softnovo.base");  
 //	    logger.debug("logback inited");
+		
+		System.out.println("----------start time-------- " + System.currentTimeMillis());
 	}
+	
+	@After
+	public void end() {
+		
+	}
+	
+	
 }
