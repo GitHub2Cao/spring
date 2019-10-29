@@ -1,8 +1,9 @@
 package com.softnovo.tttt;
 
 import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
 
-public class BookFactoryBean implements FactoryBean<Book> {
+public class BookFactoryBean implements FactoryBean<Book>, InitializingBean {
 
 	private String bookInfo;
 
@@ -32,4 +33,11 @@ public class BookFactoryBean implements FactoryBean<Book> {
 	public void setBookInfo(String bookInfo) {
 		this.bookInfo = bookInfo;
 	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		System.out.println("org.springframework.beans.factory.InitializingBean -=-=-=-=-=-=-= ");
+	}
+	
+	
 }

@@ -9,14 +9,46 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.alibaba.fastjson.JSON;
 import com.softnovo.base.ServiceBaseTest;
+import com.softnovo.common.util.SpringBeanUtil;
 import com.softnovo.domain.User;
 import com.softnovo.service.impl.MailSender;
+import com.softnovo.tttt.Book;
+import com.softnovo.tttt.BookFactoryBean;
 
 public class UserServiceTest extends ServiceBaseTest {
 	@Autowired
     private UserService userService;
 	@Autowired
 	private MailSender mailSender;
+	
+	@Test
+	public void tddd() {
+		try {
+			
+			Object bookFactoryBean = SpringBeanUtil.getBean("&book");
+			System.out.println("------" + bookFactoryBean);
+			
+			bookFactoryBean = SpringBeanUtil.getBean("book");
+			System.out.println("++++++" + bookFactoryBean);
+			
+			
+//			BookFactoryBean bookFactoryBean = SpringBeanUtil.getBean(BookFactoryBean.class);
+//			System.out.println(bookFactoryBean);
+//			
+//			
+//			
+//			
+//			
+//			Book book = bookFactoryBean.getObject();
+//			System.out.println(book);
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 	@Test
 	public void mail() {

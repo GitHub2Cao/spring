@@ -28,4 +28,11 @@ public class Book {
 	public void setSize(Integer size) {
 		this.size = size;
 	}
+
+	@Override
+	public String toString() {
+		return "Book [name=" + name + ", size=" + size + "]";
+	}
 }
+
+

@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
-import org.slf4j.LoggerFactory;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
