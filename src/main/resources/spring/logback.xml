@@ -58,6 +58,8 @@
     <logger name="org.apache.ibatis" level="DEBUG" />
     <logger name="org.mybatis" level="DEBUG" />
 	<logger name="org.springframework" level="DEBUG" />
+	<logger name="javax.servlet" level="DEBUG" />
+	<logger name="org.apache" level="DEBUG" />
 
 	<root level="debug">
 		<appender-ref ref="STDOUT" />

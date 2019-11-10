@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import com.softnovo.domain.User;
+import com.softnovo.domain.UserNew;
 
 public interface UserMapper {
 	int getMatchCount(String userName, String password);
@@ -16,4 +17,7 @@ public interface UserMapper {
 	int addUser(User user);
 	
 	int addUserBatch(@Param("users") List<User> users);
+	
+	
+	UserNew selectUserNewById(@Param("id") int id);
 }
