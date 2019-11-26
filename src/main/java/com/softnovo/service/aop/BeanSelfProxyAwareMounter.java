@@ -13,13 +13,12 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.Map;
 
-@Component
+//@Component
 public class BeanSelfProxyAwareMounter implements SystemBootAddon, ApplicationContextAware {
-
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	private ApplicationContext applicationContext;
-
+	
+	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;
 	}
@@ -35,7 +34,7 @@ public class BeanSelfProxyAwareMounter implements SystemBootAddon, ApplicationCo
 				}
 			}
 		}
-		logger.debug("_+_+_+_+_+_+_+ {},,,, {}" + JSON.toJSONString(proxyAwareMap), proxyAwareMap);
+		logger.debug("--- {} --- {}", JSON.toJSONString(proxyAwareMap), proxyAwareMap);
 	}
 
 	@Override

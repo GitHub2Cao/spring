@@ -1,5 +1,7 @@
 package com.softnovo.domain;
 
+import java.util.List;
+
 public class UserNew {
 	private int id;
 	private String userId;
@@ -7,7 +9,7 @@ public class UserNew {
 	private String accountPwd;
 	private String name;
 	
-	private Role role;
+	private List<Role> roleList;
 
 	public int getId() {
 		return id;
@@ -49,11 +51,17 @@ public class UserNew {
 		this.name = name;
 	}
 
-	public Role getRole() {
-		return role;
+	public List<Role> getRoleList() {
+		return roleList;
 	}
 
-	public void setRole(Role role) {
-		this.role = role;
+	public void setRoleList(List<Role> roleList) {
+		this.roleList = roleList;
+	}
+
+	@Override
+	public String toString() {
+		return "UserNew [id=" + id + ", userId=" + userId + ", accountId=" + accountId + ", accountPwd=" + accountPwd
+				+ ", name=" + name + ", roleList=" + roleList + "]";
 	}
 }

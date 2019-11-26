@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.alibaba.fastjson.JSON;
 import com.softnovo.dal.mapper.UserMapper;
 import com.softnovo.domain.User;
+import com.softnovo.domain.UserNew;
 
 @Repository
 public class UserDao {
@@ -42,5 +43,9 @@ public class UserDao {
 		}
 		
 		return re;
+	}
+	
+	public List<UserNew> selectUserNewById(int id) {
+		return userMapper.selectUserNewById(id);
 	}
 }

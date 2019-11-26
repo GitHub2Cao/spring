@@ -9,10 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softnovo.base.DaoBaseTest;
 import com.softnovo.domain.User;
+import com.softnovo.domain.UserNew;
 
 public class UserDaoTest extends DaoBaseTest {
 	@Autowired
     private UserDao userDao;
+//	@Autowired
+//	private UserMapper userMapper;
+	
+	@Test
+	public void testSelect() {
+		try {
+			System.out.println("()()()()()");
+			List<UserNew> list = userDao.selectUserNewById(1);
+			
+			System.out.println("_+_+_+_+_+_+_+_+" + list);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
     @Test
     public void addUser() {

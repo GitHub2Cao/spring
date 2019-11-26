@@ -9,15 +9,25 @@
 		<result property="accountId" column="account_id"/>
 		<result property="accountPwd" column="account_pwd"/>
 		<result property="name" column="name"/>
+		<!-- <collection property="roleList" javaType="com.softnovo.domain.Role"> -->
 	</resultMap>
 	
-	<select id="selectUserNewById" parameterType="int">
+	<resultMap id="usernnnMap" extends="userNewMap" type="com.softnovo.domain.UserNew">
+		<collection property="roleList" fetchType="lazy" column="{id=roleId}" select="com.softnovo.dal.mapper.RoleMapper.selectRoleById"/>
+	</resultMap>
+	
+	<select id="selectUserNewById" parameterType="int" resultMap="usernnnMap">
 		select
-			*
+			u.ID as id,
+  			u.USER_ID as userId,
+ 			u.ACCOUNT_ID as accountId,
+  			u.account_pwd as accountPwd,
+  			u.name as name,
+  			ur.role_id as roleId
 		from
-			t_user_info
+			t_user_info as u join t_user_role as ur on u.id = ur.USER_ID
 		where 
-			id = #{id}
+			u.id = #{id}
 	</select>
 
 	<select id="getMatchCount" resultType="int">

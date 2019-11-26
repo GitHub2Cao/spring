@@ -19,5 +19,5 @@ public interface UserMapper {
 	int addUserBatch(@Param("users") List<User> users);
 	
 	
-	UserNew selectUserNewById(@Param("id") int id);
+	List<UserNew> selectUserNewById(@Param("id") int id);
 }

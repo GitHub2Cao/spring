@@ -1,6 +1,8 @@
 
 package com.softnovo.service.aop;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,13 +12,12 @@ import org.springframework.core.OrderComparator;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
-import java.util.Collections;
-import java.util.List;
+import com.google.common.collect.Lists;
 
-@Component
+//@Component
 public class SystemBootManager implements ApplicationListener<ContextRefreshedEvent> {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	private List<SystemBootAddon> systemBootAddons = Collections.EMPTY_LIST;
+	private List<SystemBootAddon> systemBootAddons = Lists.newArrayList();
 	private boolean hasRunOnce = false;
 
 	@Autowired(required = false)
@@ -26,6 +27,7 @@ public class SystemBootManager implements ApplicationListener<ContextRefreshedEv
 		this.systemBootAddons = systemBootAddons;
 	}
 
+	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 		if (!hasRunOnce) {
 			for (SystemBootAddon systemBootAddon : systemBootAddons) {

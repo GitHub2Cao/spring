@@ -9,9 +9,14 @@ import org.springframework.stereotype.Service;
 @Aspect
 @Order(1)
 public class PreGreetingAspect {
-	@Before("NamePointcut.greetTo()")
-	public void beforeGreeting() {
-		System.out.println("How are you!!!");
+	@Before("execution(* serveTo(..))")
+	public void serveTo() {
+		System.out.println("How are you!!! serveTo");
+	}
+	
+	@Before("execution(* greetTo(..))")
+	public void greetTo() {
+		System.out.println("How are you!!! greetTo");
 	}
 	
 	@Before("execution(* sell(..))")

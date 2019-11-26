@@ -42,8 +42,8 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="%">
-			<generatedKey column="id" sqlStatement="Mysql"/>
+		<table tableName="t_user_info" domainObjectName="userInfo" />
+		<table tableName="t_role_info" domainObjectName="roleInfo" />
 			
 			<!-- <property name="useActualColumnNames" value="true" />
 			<generatedKey column="ID" sqlStatement="DB2"
@@ -51,6 +51,5 @@
 			<columnOverride column="DATE_FIELD" property="startDate" />
 			<ignoreColumn column="FRED" />
 			<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
-		</table>
 	</context>
 </generatorConfiguration>
