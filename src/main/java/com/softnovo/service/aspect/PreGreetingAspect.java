@@ -19,9 +19,9 @@ public class PreGreetingAspect {
 		System.out.println("How are you!!! greetTo");
 	}
 	
-	@Before("execution(* sell(..))")
-	public void beforesell() {
-		System.out.println("2222!!!");
-	}
+//	@Before("execution(* sell(..))")
+//	public void beforesell() {
+//		System.out.println("2222!!!");
+//	}
 
 }

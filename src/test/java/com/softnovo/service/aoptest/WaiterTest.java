@@ -1,7 +1,5 @@
 package com.softnovo.service.aoptest;
 
-import javax.annotation.Resource;
-
 import org.junit.Test;
 import org.springframework.aop.BeforeAdvice;
 import org.springframework.aop.framework.ProxyFactory;
@@ -11,13 +9,12 @@ import com.softnovo.base.ServiceBaseTest;
 import com.softnovo.service.Seller;
 import com.softnovo.service.Waiter;
 import com.softnovo.service.aop.GreetingBeforeAdvice;
-import com.softnovo.service.impl.NaiveWaiterImpl;
 
 public class WaiterTest extends ServiceBaseTest {
-	//@Autowired
+	@Autowired
 	private Waiter waiter;
-	@Resource
-	private NaiveWaiterImpl naiveWaiterImpl;
+//	@Resource
+//	private NaiveWaiterImpl naiveWaiterImpl;
 	
 	@Test
 	public void testEnable() {
@@ -34,7 +31,7 @@ public class WaiterTest extends ServiceBaseTest {
 	public void test() {
 		try {
 			//naiveWaiterImpl.greetTo("greetTo");
-			naiveWaiterImpl.serveTo("serveTo123");
+			waiter.serveTo("serveTo123");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

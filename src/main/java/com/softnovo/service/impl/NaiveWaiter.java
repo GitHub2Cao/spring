@@ -6,6 +6,7 @@ import com.softnovo.service.Waiter;
 
 @Service
 public class NaiveWaiter implements Waiter {
+	
 	@Override
 	public void greetTo(String name) {
 		System.out.println("greetTo " + name);

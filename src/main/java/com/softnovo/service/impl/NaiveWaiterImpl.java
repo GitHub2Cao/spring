@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.softnovo.service.Waiter;
 
-@Service
+//@Service
 public class NaiveWaiterImpl implements Waiter {
 	@Resource
 	private Waiter waiter;
