@@ -24,6 +24,11 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+		    <groupId>javax.annotation</groupId>
+		    <artifactId>jsr250-api</artifactId>
+		    <version>1.0</version>
+		</dependency>
 		<!-- spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
