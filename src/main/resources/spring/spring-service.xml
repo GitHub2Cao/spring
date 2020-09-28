@@ -17,7 +17,7 @@
         http://www.springframework.org/schema/cache 
         http://www.springframework.org/schema/cache/spring-cache.xsd"
         
-	default-autowire="byName">
+	>
 	
 	<!--扫描service包下所有使用注解的类型 -->
 	<context:component-scan base-package="com.softnovo.service" />
@@ -25,17 +25,17 @@
 	<aop:aspectj-autoproxy />
 	<cache:annotation-driven/>
 
-	<bean id="a" class="com.softnovo.springbase.A">
+	<bean id="a" class="com.softnovo.service.springbase.A">
 		<!-- 由程序员手动指定的依赖关系 称为手动装配 -->
 		<!-- <property name="b">
 			<ref bean="b" />
 		</property> -->
 	</bean>
 
-	<bean id="b" class="com.softnovo.springbase.B1">
+	<bean id="b" class="com.softnovo.service.springbase.B">
 	</bean>
 	
-	<bean id="defaultSmartLifecycle" class="com.softnovo.springbase.DefaultSmartLifecycle1" />
+	<bean id="defaultSmartLifecycle" class="com.softnovo.service.springbase.DefaultSmartLifecycle" />
 	
 	<bean class="com.softnovo.common.util.SpringBeanUtil" />
 	
