@@ -19,8 +19,23 @@
         
 	default-autowire="byName">
 	
+	<!--扫描service包下所有使用注解的类型 -->
+	<context:component-scan base-package="com.softnovo.service" />
+	
 	<aop:aspectj-autoproxy />
 	<cache:annotation-driven/>
+
+	<bean id="a" class="com.softnovo.springbase.A">
+		<!-- 由程序员手动指定的依赖关系 称为手动装配 -->
+		<!-- <property name="b">
+			<ref bean="b" />
+		</property> -->
+	</bean>
+
+	<bean id="b" class="com.softnovo.springbase.B1">
+	</bean>
+	
+	<bean id="defaultSmartLifecycle" class="com.softnovo.springbase.DefaultSmartLifecycle1" />
 	
 	<bean class="com.softnovo.common.util.SpringBeanUtil" />
 	
@@ -33,8 +48,7 @@
 		</property>
 	</bean>
 
-	<!--扫描service包下所有使用注解的类型 -->
-	<context:component-scan base-package="com.softnovo.service" />
+	
 	<!-- 配置事务管理器-->
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<!-- 注入数据库连接池 -->
